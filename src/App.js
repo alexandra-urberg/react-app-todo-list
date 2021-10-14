@@ -5,7 +5,7 @@ import Form from './components/Form.js';
 import TodoList from './components/TodoList.js';
 
 function App() {
-  const [inputText, setInputText] = useState(''); 
+  const [inputText, setInputText] = useState(''); // value and action that give you a chance to change/update this value
   const [todo, setTodo] = useState([]);
 
   return (
@@ -19,7 +19,8 @@ function App() {
         todo={todo}
         setTodo={setTodo}
       />
-      <TodoList />
+      <TodoList todo={todo}
+      />
     </div>
   );
 }
