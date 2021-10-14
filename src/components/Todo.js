@@ -6,7 +6,7 @@ const Todo = ({ text, id, todo, setTodo, tod }) => {
         setTodo(todo.filter((element) => element.id !== id))
     }
 
-    const compleateHandler = () => {
+    const compleateHandler = () => { //make the status 'completed'
         setTodo(todo.map((el) => {
             if(el.id ===id) {
                 return {
