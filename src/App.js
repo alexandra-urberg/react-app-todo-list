@@ -10,9 +10,27 @@ function App() {
   const [status, setStatus] = useState('all'); //change task status
   const [filter, setFilter] = useState([]); // to filter tasks
 
+  useEffect(() => {
+    getFromLocalStorage();
+  }, []);
+
   useEffect(() => { //filter the status at state
     filterHandler();
+    saveTolocalStorage();
   }, [todo, status]);
+
+  const saveTolocalStorage = () => {
+    localStorage.setItem('todo', JSON.stringify(todo));
+  }
+
+  const getFromLocalStorage = () => {
+    if(localStorage.getItem('todo') === null) {
+      localStorage.setItem('todo', JSON.stringify([]));
+    } else {
+      let localstrg = JSON.parse(localStorage.getItem('todo'));
+      setTodo(localstrg);
+    }
+  }
 
   const filterHandler = () => {
     switch (status) {
