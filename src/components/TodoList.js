@@ -14,6 +14,7 @@ const TodoList = ({todo, setTodo}) => { //parent component
                      key={tod.id}
                      todo={todo}
                      setTodo={setTodo}
+                     tod={tod}
                     />
                 ))}
             </ul>
