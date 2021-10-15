@@ -1,10 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const Form = ({ inputText, setInputText, tasks, setTasks, setStatus }) => {
+    const [validationErrors, setValidationErrors] = useState({inputText: ''});
 
     const inputTextHandler = (e) => { //change state value
         // console.log(e.target.value);
+        const { value } = e.target;
+        let errors = validationErrors;
         setInputText(e.target.value); 
+
+        value.length < 2 ? errors.inputText = 'Минимальное колличество символоа - 2': errors.inputText = '' && setValidationErrors(errors);// проверяем на минимальное колличество символов
     };
 
     const submitTasksHandler = (e) => { //save new value
@@ -26,12 +31,18 @@ const Form = ({ inputText, setInputText, tasks, setTasks, setStatus }) => {
 
     return(
         <form>
-            <input 
-             value={inputText} 
-             onChange={inputTextHandler} 
-             type="text" 
-             className="tasks-input" 
-            />
+            <label className="popup__label">
+                <input
+                 type="text"
+                 name="inputText"
+                 placeholder="please, write you task"
+                 required
+                 value={inputText || ""}
+                 onChange={inputTextHandler} 
+                 className="tasks-input" 
+                />
+                <span className={`${validationErrors.inputText ? "popup__input-error" : null}`}>{validationErrors.inputText}</span>
+            </label>
             <button 
              onClick={submitTasksHandler} 
              className="tasks-button" 
