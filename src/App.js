@@ -15,13 +15,28 @@ function App() {
   }, []);
 
   useEffect(() => { //filter the status at state
+
+    const saveTolocalStorage = () => {
+      localStorage.setItem('todo', JSON.stringify(todo));
+    }
+
+    const filterHandler = () => {
+      switch (status) {
+        case 'completed':
+          setFilter(todo.filter((tod) => tod.completed === true));
+          break;
+        case 'uncompleted':
+          setFilter(todo.filter((tod) => tod.completed === false));
+          break;
+        default:
+          setFilter(todo);
+          break;
+      }
+    };
+    
     filterHandler();
     saveTolocalStorage();
   }, [todo, status]);
-
-  const saveTolocalStorage = () => {
-    localStorage.setItem('todo', JSON.stringify(todo));
-  }
 
   const getFromLocalStorage = () => {
     if(localStorage.getItem('todo') === null) {
@@ -31,20 +46,6 @@ function App() {
       setTodo(localstrg);
     }
   }
-
-  const filterHandler = () => {
-    switch (status) {
-      case 'completed':
-        setFilter(todo.filter((tod) => tod.completed === true));
-        break;
-      case 'uncompleted':
-        setFilter(todo.filter((tod) => tod.completed === false));
-        break;
-      default:
-        setFilter(todo);
-        break;
-    }
-  };
 
   return (
     <div className="App">
