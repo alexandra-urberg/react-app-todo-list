@@ -30,7 +30,7 @@ const Form = ({ inputText, setInputText, tasks, setTasks, setStatus }) => {
     }
 
     return(
-        <form>
+        <form className="form">
             <label className="popup__label">
                 <input
                  type="text"
@@ -39,14 +39,14 @@ const Form = ({ inputText, setInputText, tasks, setTasks, setStatus }) => {
                  required
                  value={inputText || ""}
                  onChange={inputTextHandler} 
-                 className="tasks-input" 
+                 className="task__input"
                 />
                 <span className={`${validationErrors.inputText ? "popup__input-error" : null}`}>{validationErrors.inputText}</span>
             </label>
             <button 
              onClick={submitTasksHandler} 
-             className="tasks-button" 
              type="submit"
+             className={`tasks-button ${validationErrors.inputText || inputText === '' ? "button_disabled" : null}`} 
             >
                 <i className="fas fa-plus-square"></i>
             </button>
