@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 // Importing components
+import Header from './components/Header.js'
 import Form from './components/Form.js'; 
 import TodoList from './components/TodoList.js';
+import Footer from './components/Footer.js';
 
 function App() {
   const [inputText, setInputText] = useState(''); // value and action that give you a chance to change/update this value
@@ -49,9 +51,7 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <h1>To-Do List</h1>
-      </header>
+      <Header />
       <Form 
         inputText={inputText}
         setInputText={setInputText}
@@ -64,6 +64,7 @@ function App() {
        tasks={tasks}
        filter={filter}
       />
+      <Footer />
     </div>
   );
 }
