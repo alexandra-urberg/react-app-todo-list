@@ -6,7 +6,7 @@ import TodoList from './components/TodoList.js';
 
 function App() {
   const [inputText, setInputText] = useState(''); // value and action that give you a chance to change/update this value
-  const [todo, setTodo] = useState([]);
+  const [tasks, setTasks] = useState([]);
   const [status, setStatus] = useState('all'); //change task status
   const [filter, setFilter] = useState([]); // to filter tasks
 
@@ -14,36 +14,36 @@ function App() {
     getFromLocalStorage();
   }, []);
 
-  useEffect(() => { //filter the status at state
+  useEffect(() => { //filter the status at state and save to local storage
 
     const saveTolocalStorage = () => {
-      localStorage.setItem('todo', JSON.stringify(todo));
+      localStorage.setItem('tasks', JSON.stringify(tasks));
     }
 
     const filterHandler = () => {
       switch (status) {
         case 'completed':
-          setFilter(todo.filter((tod) => tod.completed === true));
+          setFilter(tasks.filter((task) => task.completed === true));
           break;
         case 'uncompleted':
-          setFilter(todo.filter((tod) => tod.completed === false));
+          setFilter(tasks.filter((task) => task.completed === false));
           break;
         default:
-          setFilter(todo);
+          setFilter(tasks);
           break;
       }
     };
     
     filterHandler();
     saveTolocalStorage();
-  }, [todo, status]);
+  }, [tasks, status]);
 
   const getFromLocalStorage = () => {
-    if(localStorage.getItem('todo') === null) {
-      localStorage.setItem('todo', JSON.stringify([]));
+    if(localStorage.getItem('tasks') === null) {
+      localStorage.setItem('tasks', JSON.stringify([]));
     } else {
-      let localstrg = JSON.parse(localStorage.getItem('todo'));
-      setTodo(localstrg);
+      let localStrg = JSON.parse(localStorage.getItem('tasks'));
+      setTasks(localStrg);
     }
   }
 
@@ -55,13 +55,13 @@ function App() {
       <Form 
         inputText={inputText}
         setInputText={setInputText}
-        todo={todo}
-        setTodo={setTodo}
+        tasks={tasks}
+        setTasks={setTasks}
         setStatus={setStatus}
       />
       <TodoList 
-       setTodo={setTodo}
-       todo={todo}
+       setTasks={setTasks}
+       tasks={tasks}
        filter={filter}
       />
     </div>

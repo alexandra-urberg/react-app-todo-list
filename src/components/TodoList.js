@@ -2,19 +2,19 @@ import React from 'react';
 // Import component
 import Todo from './Todo.js';
 
-const TodoList = ({todo, setTodo, filter }) => { //parent component
+const TodoList = ({tasks, setTasks, filter }) => { //parent component
     // console.log(todo);
     return(
         <div className="todo-container">
             <ul className="todo-list">
-                {filter.map(tod => (
+                {filter.map(task => (
                     <Todo 
-                     text={tod.text}
-                     id={tod.id}
-                     key={tod.id}
-                     todo={todo}
-                     setTodo={setTodo}
-                     tod={tod}
+                     text={task.text}
+                     id={task.id}
+                     key={task.id}
+                     tasks={tasks}
+                     setTasks={setTasks}
+                     task={task}
                     />
                 ))}
             </ul>

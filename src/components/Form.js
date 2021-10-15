@@ -1,16 +1,16 @@
 import React from 'react';
 
-const Form = ({ inputText, setInputText, todo, setTodo, setStatus }) => {
+const Form = ({ inputText, setInputText, tasks, setTasks, setStatus }) => {
 
     const inputTextHandler = (e) => { //change state value
         // console.log(e.target.value);
         setInputText(e.target.value); 
     };
 
-    const submitTodoHandler = (e) => { //save new value
+    const submitTasksHandler = (e) => { //save new value
         e.preventDefault();
-        setTodo([
-            ...todo, { 
+        setTasks([
+            ...tasks, { 
                 text: inputText, 
                 completed: false, 
                 id: Math.random()* 1000 //random user id
@@ -19,7 +19,7 @@ const Form = ({ inputText, setInputText, todo, setTodo, setStatus }) => {
         setInputText(''); //make inputText empty after adding to the list
     }
 
-    const statusHandler = (e) => {
+    const statusHandler = (e) => { // change status
         // console.log(e.target.value);
         setStatus(e.target.value);
     }
@@ -30,11 +30,11 @@ const Form = ({ inputText, setInputText, todo, setTodo, setStatus }) => {
              value={inputText} 
              onChange={inputTextHandler} 
              type="text" 
-             className="todo-input" 
+             className="tasks-input" 
             />
             <button 
-             onClick={submitTodoHandler} 
-             className="todo-button" 
+             onClick={submitTasksHandler} 
+             className="tasks-button" 
              type="submit"
             >
                 <i className="fas fa-plus-square"></i>

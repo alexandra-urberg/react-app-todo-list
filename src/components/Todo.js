@@ -1,14 +1,14 @@
 import React from 'react';
 
-const Todo = ({ text, id, todo, setTodo, tod }) => {
+const Todo = ({ text, id, tasks, setTasks, task }) => {
     // console.log(text);
-    const deleteTodoHandler = () => { // delete task
-        setTodo(todo.filter((element) => element.id !== id))
+    const deleteTasksHandler = () => { // delete task
+        setTasks(tasks.filter((element) => element.id !== id))
     }
 
     const compleateHandler = () => { //make the status 'completed'
-        setTodo(todo.map((el) => {
-            if(el.id ===id) {
+        setTasks(tasks.map((el) => {
+            if(el.id === id) {
                 return {
                     ...el, completed: !el.completed
                 }
@@ -19,18 +19,18 @@ const Todo = ({ text, id, todo, setTodo, tod }) => {
 
     return(
         <div className="todo">
-            <li className={`todo-item ${tod.completed ? "completed" : ""}`}>{text}</li>
+            <li className={`todo-item ${task.completed ? "completed" : ""}`}>{text}</li>
             <button 
              onClick={compleateHandler}
              className="complete-btn"
             >
-                <i className="fas fa-check"></i>
+              <i className="fas fa-check"></i>
             </button>
             <button 
-             onClick={deleteTodoHandler}
+             onClick={deleteTasksHandler}
              className="trash-btn"
             >
-                <i className="fas fa-trash"></i>
+              <i className="fas fa-trash"></i>
             </button>
         </div>
     );
