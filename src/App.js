@@ -50,20 +50,22 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="app">
       <Header />
-      <Form 
-        inputText={inputText}
-        setInputText={setInputText}
-        tasks={tasks}
-        setTasks={setTasks}
-        setStatus={setStatus}
-      />
-      <TodoList 
-       setTasks={setTasks}
-       tasks={tasks}
-       filter={filter}
-      />
+      <main className="main">
+        <Form 
+         inputText={inputText}
+         setInputText={setInputText}
+         tasks={tasks}
+         setTasks={setTasks}
+         setStatus={setStatus}
+        />
+        <TodoList 
+         setTasks={setTasks}
+         tasks={tasks}
+         filter={filter}
+        />
+      </main>
       <Footer />
     </div>
   );

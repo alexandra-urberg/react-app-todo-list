@@ -32,13 +32,13 @@ const Form = ({ inputText, setInputText, tasks, setTasks, setStatus }) => {
 
     return(
         <form className="form">
-            <h2> What do we need to do?</h2>
+            <h2 className="title">Create new task</h2>
             <div className="form__container">
                 <label className="label">
                     <input
                      type="text"
                      name="inputText"
-                     placeholder="please, write you task"
+                     placeholder="Task name"
                      required
                      value={inputText || ""}
                      onChange={inputTextHandler} 
@@ -63,7 +63,7 @@ const Form = ({ inputText, setInputText, tasks, setTasks, setStatus }) => {
                     </select>
                 </div>
             </div>
-            <span className={`${validationErrors.inputText ? "popup__input-error" : null}`}>{validationErrors.inputText}</span>
+            <span className={`${validationErrors.inputText ? "input-error" : null}`}>{validationErrors.inputText}</span>
             <Timer />
         </form>
     );

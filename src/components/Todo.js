@@ -1,7 +1,8 @@
 import React from 'react';
 
 const Todo = ({ text, id, tasks, setTasks, task }) => {
-    // console.log(text);
+    // console.log(text)
+
     const deleteTasksHandler = () => { // delete task
         setTasks(tasks.filter((element) => element.id !== id))
     }
@@ -18,21 +19,23 @@ const Todo = ({ text, id, tasks, setTasks, task }) => {
     }
 
     return(
-        <div className="todo">
-            <li className={`todo-item ${task.completed ? "completed" : ""}`}>{text}</li>
-            <button 
-             onClick={compleateHandler}
-             className="complete-btn"
-            >
-              <i className="fas fa-check"></i>
-            </button>
-            <button 
-             onClick={deleteTasksHandler}
-             className="trash-btn"
-            >
-              <i className="fas fa-trash"></i>
-            </button>
-        </div>
+        <li className="todo">
+            <p className={`todo-item ${task.completed ? "completed" : ""}`}>{text}</p>
+            <div>
+                <button 
+                 onClick={compleateHandler}
+                 className="complete-btn"
+                >
+                    <i className="fas fa-check"></i>
+                </button>
+                <button 
+                 onClick={deleteTasksHandler}
+                 className="trash-btn"
+                >
+                    <i className="fas fa-trash"></i>
+                </button>
+            </div>
+        </li>
     );
 }
 

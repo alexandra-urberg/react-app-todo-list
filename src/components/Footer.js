@@ -5,8 +5,7 @@ function Footer() {
     const footer = {
        width: '80%',
        flexShrink: 0,
-       margin: '0 auto',
-       paddingBottom: 60
+       margin: '0 auto'
     }
 
     const footerName = {
@@ -18,7 +17,6 @@ function Footer() {
         fontStyle: 'normal',
         fontWeight: 400
     }
-
 
     return (
         <footer style={footer}> 
