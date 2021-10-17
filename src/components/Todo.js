@@ -1,39 +1,29 @@
-import React from 'react';
+import React from "react";
+import { useDispatch } from "react-redux";
+import { changeTaskStatus, deleteTask } from "../store/reducers/taskReducer";
 
-const Todo = ({ text, id, tasks, setTasks, task }) => {
-    // console.log(text);
-    const deleteTasksHandler = () => { // delete task
-        setTasks(tasks.filter((element) => element.id !== id))
-    }
+const Todo = ({ task }) => {
+  const dispatch = useDispatch();
 
-    const compleateHandler = () => { //make the status 'completed'
-        setTasks(tasks.map((el) => {
-            if(el.id === id) {
-                return {
-                    ...el, completed: !el.completed
-                }
-            }
-            return el;
-        }));
-    }
-
-    return(
-        <div className="todo">
-            <li className={`todo-item ${task.completed ? "completed" : ""}`}>{text}</li>
-            <button 
-             onClick={compleateHandler}
-             className="complete-btn"
-            >
-              <i className="fas fa-check"></i>
-            </button>
-            <button 
-             onClick={deleteTasksHandler}
-             className="trash-btn"
-            >
-              <i className="fas fa-trash"></i>
-            </button>
-        </div>
-    );
-}
+  return (
+    <div className="todo">
+      <li className={`todo-item ${task.completed && "completed"}`}>
+        {task.text}
+      </li>
+      <button
+        onClick={() => dispatch(changeTaskStatus(task))}
+        className="complete-btn"
+      >
+        <i className="fas fa-check"></i>
+      </button>
+      <button
+        onClick={() => dispatch(deleteTask(task.id))}
+        className="trash-btn"
+      >
+        <i className="fas fa-trash"></i>
+      </button>
+    </div>
+  );
+};
 
 export default Todo;

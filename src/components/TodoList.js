@@ -1,25 +1,17 @@
-import React from 'react';
-// Import component
-import Todo from './Todo.js';
+import React from "react";
+import { useSelector } from "react-redux";
+import Todo from "./Todo.js";
 
-const TodoList = ({tasks, setTasks, filter }) => { //parent component
-    // console.log(todo);
-    return(
-        <div className="todo-container">
-            <ul className="todo-list">
-                {filter.map(task => (
-                    <Todo 
-                     text={task.text}
-                     id={task.id}
-                     key={task.id}
-                     tasks={tasks}
-                     setTasks={setTasks}
-                     task={task}
-                    />
-                ))}
-            </ul>
-        </div>
-    );
-}
+const TodoList = () => {
+  const filteredTasks = useSelector((state) => state.task.filteredTasks).map(
+    (task) => <Todo key={task.id} task={task} />
+  );
+
+  return (
+    <div className="todo-container">
+      <ul className="todo-list">{filteredTasks}</ul>
+    </div>
+  );
+};
 
 export default TodoList;
