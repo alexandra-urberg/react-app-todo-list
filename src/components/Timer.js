@@ -59,22 +59,35 @@ function Timer() {
     // passing null stops the interval
   );
   return (
-    <div>
-      <h3>Timer</h3>
-      <button onClick={handleStart} type="button">
+    <div className="timer">
+      <h3 className="timer__title">Timer for tasks</h3>
+      <div className="timer__container">
+      <button 
+       className="button"
+       onClick={handleStart} 
+        type="button"
+      >
         Start
       </button>
-      <button onClick={handleStop} type="button">
+      <button 
+       className="button"
+       onClick={handleStop} 
+       type="button"
+      >
         Stop
       </button>
-      <button onClick={handleReset} type="button">
+      <button 
+       className="button"
+       onClick={handleReset} 
+       type="button"
+      >
         Reset
       </button>
+      </div>
       <div style={{ padding: 20 }}>
         {twoDigits(hoursToDisplay)}:{twoDigits(minutesToDisplay)}:
         {twoDigits(secondsToDisplay)}
       </div>
-      <div>Status: {status}</div>
     </div>
   );
 }

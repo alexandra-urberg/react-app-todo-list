@@ -11,13 +11,17 @@ function Footer() {
   const footerName = {
     width: "100",
     textAlign: "center",
-
-    fontSize: 18,
+     fontSize: 18,
     lineHeight: 20.5,
-    fontStyle: "normal",
-    fontWeight: 400,
+    fontStyle: "normal"
   };
-
+  
+    const footer = {
+       width: '80%',
+       flexShrink: 0,
+       margin: '0 auto'
+    }
+    
   return (
     <footer style={footer}>
       <p style={footerName}>&#169; 2021. Alexandra. All rights reserved.</p>

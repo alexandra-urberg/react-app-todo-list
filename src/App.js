@@ -19,7 +19,7 @@ function App() {
   }, [dispatch, tasks, filterStatus]);
 
   return (
-    <div className="App">
+    <div className="app">
       <Header />
       <Form />
       <TodoList />

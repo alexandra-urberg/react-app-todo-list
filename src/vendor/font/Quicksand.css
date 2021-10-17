@@ -1,0 +1,11 @@
+@font-face {
+  src: url('./Quicksand-Regular.ttf') format('truetype');
+  font-family: 'Quicksand';
+  font-style:  normal;
+}
+
+@font-face {
+  src: url('./Quicksand-Bold.ttf') format('truetype');
+  font-family: 'Quicksand';
+  font-style:  bold;
+}
